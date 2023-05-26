@@ -16,22 +16,27 @@
 
 body {
   margin: 0;
-  background-color: rgb(40, 40, 40);
-  color: white;
+  background-color: #18191a;
+  color: #e4e6eb;
   font-weight: 400;
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App h1 {
-  padding-left: 1rem;
+.app h1 {
+  padding-top: 1rem;
+  padding-left: 1.5rem;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #fa6e16;
 }
 
-.App section {
+.app .cards {
   padding: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
