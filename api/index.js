@@ -1,5 +1,4 @@
 const express = require("express");
-const http = require("http");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -37,16 +36,18 @@ app.get("/", (req, res) => {
     );
 });
 
-const server = http.createServer(app);
-
-process.env.HOSTNAME
-  ? server.listen(process.env.PORT || 8080, process.env.HOSTNAME, () => {
-      console.log(
-        `Server is running on ${process.env.HOSTNAME}:${
-          process.env.PORT || 8080
-        }`
-      );
-    })
-  : server.listen(process.env.PORT || 8080, () => {
-      console.log(`Server is running on port ${process.env.PORT || 8080}`);
-    });
+if (process.env.HOSTNAME) {
+  const http = require("http");
+  const server = http.createServer(app);
+  server.listen(process.env.PORT || 8080, process.env.HOSTNAME, () => {
+    console.log(
+      `Server is running on ${process.env.HOSTNAME}:${process.env.PORT || 8080}`
+    );
+  });
+} else {
+  app.listen(process.env.PORT || 8080, () => {
+    console.log(
+      `Server is running on port ${process.env.PORT || 8080}`
+    );
+  });
+}
