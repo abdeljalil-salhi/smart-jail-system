@@ -40,7 +40,8 @@ router.put("/:id", async (req, res) => {
     const alarm = await Alarm.findByIdAndUpdate(req.params.id, {
       $set: req.body,
     });
-    if (!alarm) res.status(404).json(`Alarm ${req.params.id} not found...`);
+    if (!alarm)
+      return res.status(404).json(`Alarm ${req.params.id} not found...`);
     res.status(200).json(alarm);
   } catch (err) {
     res.status(500).json(err);
@@ -50,7 +51,8 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const deleted = await Alarm.findByIdAndDelete(req.params.id);
-    if (!deleted) res.status(404).json(`Alarm ${req.params.id} not found...`);
+    if (!deleted)
+      return res.status(404).json(`Alarm ${req.params.id} not found...`);
     res.status(200).json(`Alarm ${req.params.id} has been deleted...`);
   } catch (err) {
     res.status(500).json(err);
@@ -60,7 +62,7 @@ router.delete("/:id", async (req, res) => {
 router.delete("/", async (req, res) => {
   try {
     const deleted = await Alarm.deleteMany();
-    if (!deleted) res.status(404).json(`Alarms not found...`);
+    if (!deleted) return res.status(404).json(`Alarms not found...`);
     res.status(200).json(`Alarms have been deleted...`);
   } catch (err) {
     res.status(500).json(err);

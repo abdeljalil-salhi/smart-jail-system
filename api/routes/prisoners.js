@@ -36,7 +36,7 @@ router.put("/:id", async (req, res) => {
       $set: req.body,
     });
     if (!prisoner)
-      res.status(404).json(`Prisoner ${req.params.id} not found...`);
+      return res.status(404).json(`Prisoner ${req.params.id} not found...`);
     res.status(200).json(prisoner);
   } catch (err) {
     res.status(500).json(err);
@@ -47,7 +47,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const deleted = await Prisoner.findByIdAndDelete(req.params.id);
     if (!deleted)
-      res.status(404).json(`Prisoner ${req.params.id} not found...`);
+      return res.status(404).json(`Prisoner ${req.params.id} not found...`);
     res.status(200).json(`Prisoner ${req.params.id} has been deleted...`);
   } catch (err) {
     res.status(500).json(err);
