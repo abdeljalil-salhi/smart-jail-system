@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import "./Card.css";
+import { API_URL } from "../constants";
 
 const Card = ({ title }) => {
   const [number, setNumber] = useState(0);
 
   useEffect(() => {
+    const fetchData = async () => {
+      await axios({
+        method: "GET",
+        url: API_URL + title.toLowerCase(),
+      })
+        .then((res) => {
+          setNumber(res.data.length);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchData();
     const interval = setInterval(() => {
-      setNumber(Math.floor(Math.random() * 100));
+      fetchData();
     }, 1000);
     return () => clearInterval(interval);
   }, []);
