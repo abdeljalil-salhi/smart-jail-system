@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
+const serverless = require("serverless-http");
 
 const prisonerRoute = require("./routes/prisoners");
 const alarmRoute = require("./routes/alarms");
@@ -21,6 +23,7 @@ mongoose
     console.log(err);
   });
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/prisoners", prisonerRoute);
@@ -32,6 +35,11 @@ app.get("/", (req, res) => {
     .json("Welcome to the Prisoner Management System API. Please use /prisoners or /alarms to access the API.");
 });
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`Server is running on localhost:${process.env.PORT || 8080}`);
-});
+app.use(`/.netlify/functions/api`, router);
+
+// app.listen(process.env.PORT || 8080, () => {
+//   console.log(`Server is running on localhost:${process.env.PORT || 8080}`);
+// });
+
+module.exports = app;
+module.exports.handler = serverless(app);

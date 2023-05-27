@@ -4,7 +4,12 @@ const Alarm = require("../models/alarm");
 
 router.post("/new", async (req, res) => {
   try {
-    const newAlarm = new Alarm(req.body);
+    // const newAlarm = new Alarm(req.body);
+    const newAlarm = new Alarm({
+      prisonerID: "5454545",
+      text: "A prisoner is trying to escape!",
+      alarmType: "escape",
+    });
     const alarm = await newAlarm.save();
     res.status(200).json(alarm);
   } catch (err) {
@@ -35,8 +40,7 @@ router.put("/:id", async (req, res) => {
     const alarm = await Alarm.findByIdAndUpdate(req.params.id, {
       $set: req.body,
     });
-	if (!alarm)
-		res.status(404).json(`Alarm ${req.params.id} not found...`);
+    if (!alarm) res.status(404).json(`Alarm ${req.params.id} not found...`);
     res.status(200).json(alarm);
   } catch (err) {
     res.status(500).json(err);
@@ -48,6 +52,16 @@ router.delete("/:id", async (req, res) => {
     const deleted = await Alarm.findByIdAndDelete(req.params.id);
     if (!deleted) res.status(404).json(`Alarm ${req.params.id} not found...`);
     res.status(200).json(`Alarm ${req.params.id} has been deleted...`);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/", async (req, res) => {
+  try {
+    const deleted = await Alarm.deleteMany();
+    if (!deleted) res.status(404).json(`Alarms not found...`);
+    res.status(200).json(`Alarms have been deleted...`);
   } catch (err) {
     res.status(500).json(err);
   }
