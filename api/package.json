@@ -4,9 +4,7 @@
   "description": "",
   "main": "src/api.js",
   "scripts": {
-    "dev": "nodemon src/api.js",
-    "start": "./node_modules/.bin/netlify-lambda serve src",
-    "build": "./node_modules/.bin/netlify-lambda build src"
+    "dev": "nodemon src/api.js"
   },
   "author": "Abdeljalil Salhi",
   "license": "ISC",
