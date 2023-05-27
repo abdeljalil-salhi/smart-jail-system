@@ -36,18 +36,16 @@ app.get("/", (req, res) => {
     );
 });
 
-if (process.env.HOSTNAME) {
+if (process.env.NODE_ENV === "production") {
+  app.listen(process.env.PORT || 8080, () => {
+    console.log(`Server is running on port ${process.env.PORT || 8080}`);
+  });
+} else {
   const http = require("http");
   const server = http.createServer(app);
   server.listen(process.env.PORT || 8080, process.env.HOSTNAME, () => {
     console.log(
       `Server is running on ${process.env.HOSTNAME}:${process.env.PORT || 8080}`
-    );
-  });
-} else {
-  app.listen(process.env.PORT || 8080, () => {
-    console.log(
-      `Server is running on port ${process.env.PORT || 8080}`
     );
   });
 }
