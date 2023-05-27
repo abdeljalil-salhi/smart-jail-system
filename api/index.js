@@ -1,4 +1,5 @@
 const express = require("express");
+const http = require("http");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -6,6 +7,8 @@ const cors = require("cors");
 
 const prisonerRoute = require("./routes/prisoners");
 const alarmRoute = require("./routes/alarms");
+
+const hostname = process.env.HOSTNAME || "localhost";
 
 dotenv.config();
 
@@ -36,6 +39,8 @@ app.get("/", (req, res) => {
     );
 });
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`Server is running on localhost:${process.env.PORT || 8080}`);
+const server = http.createServer(app);
+
+server.listen(process.env.PORT || 8080, hostname, () => {
+  console.log(`Server is running on ${hostname}:${process.env.PORT || 8080}`);
 });
