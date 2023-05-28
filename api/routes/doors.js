@@ -1,11 +1,11 @@
 const router = require("express").Router();
 
-const General = require("../models/General");
+const Door = require("../models/Door");
 
-router.get("/doors", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const general = await General.find();
-    res.status(200).json(general[0].doorsClosed);
+    const door = await Door.find().sort({ createdAt: -1 }).limit(1);
+    res.status(200).json(door);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -13,18 +13,11 @@ router.get("/doors", async (req, res) => {
 
 router.post("/open", async (req, res) => {
   try {
-    const general = await General.find();
-    if (!general) {
-      const newGeneral = new General({
-        doorsClosed: false,
-      });
-      general[0] = await newGeneral.save();
-    }
-    if (general[0].doorsClosed === false)
-      return res.status(200).json(general[0].doorsClosed);
-    general[0].doorsClosed = false;
-    await general[0].save();
-    res.status(200).json(general[0].doorsClosed);
+    const newDoor = new Door({
+      isClosed: false,
+    });
+    const door = await newDoor.save();
+    res.status(200).json(door);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -32,18 +25,11 @@ router.post("/open", async (req, res) => {
 
 router.post("/close", async (req, res) => {
   try {
-    const general = await General.find();
-    if (!general) {
-      const newGeneral = new General({
-        doorsClosed: true,
-      });
-      general[0] = await newGeneral.save();
-    }
-    if (general[0].doorsClosed === true)
-      return res.status(200).json(general[0].doorsClosed);
-    general[0].doorsClosed = true;
-    await general[0].save();
-    res.status(200).json(general[0].doorsClosed);
+    const newDoor = new Door({
+      isClosed: true,
+    });
+    const door = await newDoor.save();
+    res.status(200).json(door);
   } catch (err) {
     res.status(500).json(err);
   }
