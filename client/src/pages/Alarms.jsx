@@ -46,6 +46,20 @@ const Alarms = () => {
               <p>
                 <b>Note:</b> {alarm.text}
               </p>
+              <button
+                onClick={async () =>
+                  await axios({
+                    method: "DELETE",
+                    url: `${API_URL}alarms/${alarm._id}`,
+                  })
+                    .then((res) => {})
+                    .catch((err) => {
+                      console.log(err);
+                    })
+                }
+              >
+                Mark as read
+              </button>
             </div>
           ))}
         </div>

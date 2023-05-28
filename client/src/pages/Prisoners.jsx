@@ -34,11 +34,18 @@ const Prisoners = () => {
         <div className="elements">
           {prisoners.map((prisoner, index) => (
             <div className="element" key={index}>
-              <h3>{prisoner.prisonerID}</h3>
               <p>
-                {prisoner.name} - {prisoner.age}
+                <b>Prisoner ID:</b> {prisoner.prisonerID}
               </p>
-              <p>Cell ID: {prisoner.cellID}</p>
+              <p>
+                <b>Name/Age:</b> {prisoner.name} - {prisoner.age}
+              </p>
+              <p>
+                <b>Time:</b> {new Date(prisoner.createdAt).toLocaleString()}
+              </p>
+              <p>
+                <b>Cell ID:</b> {prisoner.cellID}
+              </p>
             </div>
           ))}
         </div>

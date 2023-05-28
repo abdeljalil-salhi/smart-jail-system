@@ -77,8 +77,20 @@ body {
   box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
   background-color: #1a1b1bd0;
   position: relative;
-  min-width: 300px;
+  min-width: 500px;
   max-width: 500px;
+}
+@media screen and (max-width: 600px) {
+  .app .flex .elements .element {
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .app .flex .elements .element {
+    min-width: 250px;
+    max-width: 250px;
+  }
 }
 .app .flex .elements .element p b {
   color: #fa6e16;
@@ -93,6 +105,19 @@ body {
   right: 0px;
   transform: rotate(-30deg);
   content: "\f0f3";
+}
+
+.app .flex .elements .element button {
+  background-color: #fa6e16;
+  padding: 5px 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  cursor: pointer;
+  font-weight: 400;
+  color: #e4e6eb;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 768px) {

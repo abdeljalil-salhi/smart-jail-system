@@ -5,9 +5,9 @@ const Alarm = require("../models/Alarm");
 router.post("/new/escape", async (req, res) => {
   try {
     const newAlarm = new Alarm({
-      prisonerID: "5454545",
+      prisonerID: "132458 - Brahim Elkartouch - Cell 3",
       alarmType: "ESCAPE",
-      text: "Prisoner 5454545 is trying to escape!",
+      text: "Prisoner 132458 is trying to escape!",
     });
     const alarm = await newAlarm.save();
     res.status(200).json(alarm);
