@@ -32,13 +32,68 @@ body {
   overflow-x: hidden;
 }
 
-.app h1 {
+.app .flex__space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.app .flex__space h1 {
   padding-top: 1rem;
   padding-left: 1.5rem;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #fa6e16;
+}
+
+.app .flex__space .infos {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 0px 1rem;
+}
+
+.app .flex__space .infos p {
+  font-size: 1.2rem;
+  transition: all 0.3s ease-in-out;
+  margin-right: 1rem;
+  font-weight: 400 !important;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #1a1b1bd0;
+  color: #e4e6eb;
+  cursor: pointer;
+}
+
+.app .flex__space .infos p i {
+  color: #fa6e16;
+  font-size: 14px;
+  margin-left: 0.5rem;
+}
+
+.app .flex__space .infos p b {
+  color: #e4e6eb;
+  font-weight: 400;
+  margin-right: 0.5rem;
+}
+
+.app .flex__space .infos .info--closed {
+  background-color: #ff620048;
+}
+.app .flex__space .infos .info--closed i {
+  color: red;
+}
+
+.app .flex__space .infos .info--open {
+  background-color: #62ff0048;
+}
+.app .flex__space .infos .info--open i {
+  color: green;
 }
 
 .app .cards {
