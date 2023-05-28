@@ -115,15 +115,20 @@ const App = () => {
       Connection.prototype.draw = function () {
         ctx.fillStyle = this.screen.color;
         ctx.beginPath();
-        if (this.isEnd) ctx.arc(this.screen.x, this.screen.y, 1, 0, Tau);
-        else
-          ctx.arc(
-            this.screen.x,
-            this.screen.y,
-            this.screen.scale * this.size,
-            0,
-            Tau
-          );
+        try {
+          if (this.isEnd || this.screen.scale * this.size < 0.5 || !opts.dots)
+            ctx.arc(this.screen.x, this.screen.y, 1, 0, Tau);
+          else
+            ctx.arc(
+              this.screen.x,
+              this.screen.y,
+              this.screen.scale * this.size,
+              0,
+              Tau
+            );
+        } catch (e) {
+          console.log(e);
+        }
         ctx.fill();
       };
 
