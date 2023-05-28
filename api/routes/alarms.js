@@ -2,13 +2,40 @@ const router = require("express").Router();
 
 const Alarm = require("../models/Alarm");
 
-router.post("/new", async (req, res) => {
+router.post("/new/escape", async (req, res) => {
   try {
-    // const newAlarm = new Alarm(req.body);
     const newAlarm = new Alarm({
       prisonerID: "5454545",
-      alarmType: "escape",
+      alarmType: "ESCAPE",
       text: "Prisoner 5454545 is trying to escape!",
+    });
+    const alarm = await newAlarm.save();
+    res.status(200).json(alarm);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/new/flame", async (req, res) => {
+  try {
+    const newAlarm = new Alarm({
+      prisonerID: "Staff",
+      alarmType: "FLAME",
+      text: "Fire detected in the prison!",
+    });
+    const alarm = await newAlarm.save();
+    res.status(200).json(alarm);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/new/gas", async (req, res) => {
+  try {
+    const newAlarm = new Alarm({
+      prisonerID: "Staff",
+      alarmType: "GAS",
+      text: "Gas detected in the prison!",
     });
     const alarm = await newAlarm.save();
     res.status(200).json(alarm);
