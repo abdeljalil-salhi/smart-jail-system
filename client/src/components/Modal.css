@@ -59,6 +59,31 @@
   border-bottom: 1px solid rgb(80, 80, 80);
 }
 
+.modal .modal__content .modal__content__header span small {
+  font-size: 14px;
+  color: gray;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.modal .modal__content .modal__content__header .modal__content__header__goto {
+  float: right;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.modal .modal__content .modal__content__header .modal__content__header__goto a {
+  color: #fa6e16;
+}
+.modal
+  .modal__content
+  .modal__content__header
+  .modal__content__header__goto
+  a:hover {
+  color: #fa6e16d2;
+}
+
 .modal .modal__content .modal__content__body {
   padding: 20px 10px;
   font-size: 17px;
@@ -93,4 +118,22 @@
   font-weight: 400;
   color: #e4e6eb;
   font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+.modal .modal__content .modal__content__footer .modal__button:hover {
+  background-color: #fa6e16d2;
+}
+
+.modal .modal__content .modal__content__footer .modal__button__all {
+  background-color: #32323274;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.modal .modal__content .modal__content__footer .modal__button__all:hover {
+  background-color: #323232d2;
 }

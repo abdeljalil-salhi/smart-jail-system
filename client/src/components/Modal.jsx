@@ -25,13 +25,34 @@ const Modal = ({ showModal, setShowModal, elements }) => {
       });
   };
 
+  const deleteAlarms = async () => {
+    await axios({
+      method: "DELETE",
+      url: `${API_URL}alarms`,
+    })
+      .then((res) => {
+        setShowModal(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   if (!showModal) return null;
 
   return createPortal(
     <div className="backdrop">
       <div className="modal">
         <div className="modal__content">
-          <div className="modal__content__header">Alarm</div>
+          <div className="modal__content__header">
+            <span>
+              <span>Alarm</span>
+              <small>#{alarm._id}</small>
+            </span>
+            <span className="modal__content__header__goto">
+              <a href="/alarms">Go to alarms &gt;&gt;</a>
+            </span>
+          </div>
           <div className="modal__content__body">
             {alarm && (
               <>
@@ -53,6 +74,9 @@ const Modal = ({ showModal, setShowModal, elements }) => {
           <div className="modal__content__footer">
             <button className="modal__button" onClick={deleteAlarm}>
               Mark as read
+            </button>
+            <button className="modal__button__all" onClick={deleteAlarms}>
+              Mark all as read
             </button>
           </div>
         </div>

@@ -107,6 +107,12 @@ body {
   content: "\f0f3";
 }
 
+.app .flex .elements .element small {
+  font-size: 14px;
+  color: gray;
+  font-weight: 400;
+}
+
 .app .flex .elements .element button {
   background-color: #fa6e16;
   padding: 5px 10px;

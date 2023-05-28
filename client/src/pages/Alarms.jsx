@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { API_URL } from "../constants";
+import { API_URL, REFRESH_INTERVAL } from "../constants";
 
 const Alarms = () => {
   const [alarms, setAlarms] = useState([]);
@@ -23,7 +23,7 @@ const Alarms = () => {
     fetchAlarms();
     const interval = setInterval(() => {
       fetchAlarms();
-    }, 1000);
+    }, REFRESH_INTERVAL);
     return () => clearInterval(interval);
   }, []);
 
@@ -34,6 +34,7 @@ const Alarms = () => {
         <div className="elements">
           {alarms.map((alarm, index) => (
             <div className="element" key={index}>
+              <small>#{alarm._id}</small>
               <p>
                 <b>Prisoner ID:</b> {alarm.prisonerID}
               </p>

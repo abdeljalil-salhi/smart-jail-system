@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./Card.css";
-import { API_URL } from "../constants";
+import { API_URL, REFRESH_INTERVAL } from "../constants";
 import Modal from "./Modal";
 
 const Card = ({ title }) => {
@@ -33,7 +33,7 @@ const Card = ({ title }) => {
     const interval = setInterval(() => {
       fetchData();
       if (first) setFirst(false);
-    }, 1000);
+    }, REFRESH_INTERVAL);
     return () => clearInterval(interval);
   }, []);
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { API_URL } from "../constants";
+import { API_URL, REFRESH_INTERVAL } from "../constants";
 
 const Prisoners = () => {
   const [prisoners, setPrisoners] = useState([]);
@@ -23,7 +23,7 @@ const Prisoners = () => {
     fetchPrisoners();
     const interval = setInterval(() => {
       fetchPrisoners();
-    }, 1000);
+    }, REFRESH_INTERVAL);
     return () => clearInterval(interval);
   }, []);
 
