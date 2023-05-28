@@ -29,6 +29,7 @@ body {
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 .app h1 {
@@ -46,4 +47,58 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+}
+
+.app .flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.app .flex .elements {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-height: 70vh;
+  max-width: 50vw;
+}
+
+.app .flex .elements .element {
+  margin: 20px;
+  padding: 20px 30px 60px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
+  background-color: #1a1b1bd0;
+  position: relative;
+  min-width: 300px;
+  max-width: 500px;
+}
+.app .flex .elements .element p b {
+  color: #fa6e16;
+  font-weight: 500;
+}
+.app .flex .elements .element::after {
+  bottom: -5px;
+  color: #ff620048;
+  font-family: "Font Awesome 5 Free";
+  font-size: 5em;
+  position: absolute;
+  right: 0px;
+  transform: rotate(-30deg);
+  content: "\f0f3";
+}
+
+@media screen and (max-width: 768px) {
+  .app .flex .elements .element {
+    flex: 0 1 45%;
+    padding: 1.4em 1.4em 6em 2.2em;
+    margin: 25px 0;
+  }
 }

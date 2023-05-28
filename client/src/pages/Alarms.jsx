@@ -30,14 +30,26 @@ const Alarms = () => {
   return (
     <>
       <h1>Smart Jail System 1.0.0 - Alarms</h1>
-      <p>Alarms</p>
-      {alarms.map((alarm, index) => (
-        <div key={index}>
-          <h3>{alarm.prisonerID}</h3>
-          <p>{alarm.alarmType}</p>
-          <p>{alarm.text}</p>
+      <div className="flex">
+        <div className="elements">
+          {alarms.map((alarm, index) => (
+            <div className="element" key={index}>
+              <p>
+                <b>Prisoner ID:</b> {alarm.prisonerID}
+              </p>
+              <p>
+                <b>Type:</b> {alarm.alarmType}
+              </p>
+              <p>
+                <b>Time:</b> {new Date(alarm.createdAt).toLocaleString()}
+              </p>
+              <p>
+                <b>Note:</b> {alarm.text}
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </>
   );
 };

@@ -30,16 +30,19 @@ const Prisoners = () => {
   return (
     <>
       <h1>Smart Jail System 1.0.0 - Prisoners</h1>
-      <p>Prisoners</p>
-      {prisoners.map((prisoner, index) => (
-        <div key={index}>
-          <h3>{prisoner.prisonerID}</h3>
-          <p>
-            {prisoner.name} - {prisoner.age}
-          </p>
-          <p>Cell ID: {prisoner.cellID}</p>
+      <div className="flex">
+        <div className="elements">
+          {prisoners.map((prisoner, index) => (
+            <div className="element" key={index}>
+              <h3>{prisoner.prisonerID}</h3>
+              <p>
+                {prisoner.name} - {prisoner.age}
+              </p>
+              <p>Cell ID: {prisoner.cellID}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </>
   );
 };
