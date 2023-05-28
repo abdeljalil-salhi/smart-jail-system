@@ -11,7 +11,7 @@ router.get("/doors", async (req, res) => {
   }
 });
 
-router.post("/doors/open", async (req, res) => {
+router.post("/open", async (req, res) => {
   try {
     const general = await General.find();
     if (!general) {
@@ -30,7 +30,7 @@ router.post("/doors/open", async (req, res) => {
   }
 });
 
-router.post("/doors/close", async (req, res) => {
+router.post("/close", async (req, res) => {
   try {
     const general = await General.find();
     if (!general) {
