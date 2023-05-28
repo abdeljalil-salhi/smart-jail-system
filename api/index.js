@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const prisonerRoute = require("./routes/prisoners");
 const alarmRoute = require("./routes/alarms");
+const doorRoute = require("./routes/doors");
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(express.json());
 
 app.use("/prisoners", prisonerRoute);
 app.use("/alarms", alarmRoute);
+app.use("/doors", doorRoute);
 
 app.get("/", (req, res) => {
   res
