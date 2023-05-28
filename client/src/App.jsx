@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import Routes from "./Routes";
+import Login from "./pages/Login";
 
 const App = () => {
   useEffect(() => {
@@ -371,7 +372,7 @@ const App = () => {
   return (
     <div className="app">
       <canvas id="c"></canvas>
-      <Routes />
+      {localStorage.getItem("user") ? <Routes /> : <Login />}
     </div>
   );
 };

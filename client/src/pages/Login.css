@@ -1,0 +1,108 @@
+@keyframes undrop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+  40% {
+    opacity: 0;
+    -webkit-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes undrop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+  40% {
+    opacity: 0;
+    -webkit-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+
+.login__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login__wrapper .login__form {
+  display: flex;
+  margin: 20px;
+  flex-direction: column;
+  justify-content: center;
+  animation: undrop 1s ease;
+  -webkit-animation: undrop 1s ease;
+  box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
+  background-color: #1a1b1bd0;
+  padding: 30px 20px 20px 20px;
+  border-radius: 10px;
+}
+
+.login__wrapper .login__form h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fa6e16;
+}
+
+.login__wrapper .login__form .login__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 1s ease;
+  min-width: 300px;
+}
+
+.login__wrapper .login__form .login__box input {
+  width: 80%;
+  border: none;
+  font-size: 18px;
+  outline-width: 0;
+  background-color: transparent;
+  color: #e4e6eb;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 10px 20px 10px 10px;
+  background-color: #303030a8;
+}
+
+.login__wrapper .login__form .login__box button {
+  width: 60%;
+  border: none;
+  font-size: 18px;
+  outline-width: 0;
+  color: #e4e6eb;
+  font-weight: 400;
+  border-radius: 10px;
+  padding: 7px 20px 7px 20px;
+  background-color: #fa6d16ad;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.login__wrapper .login__form .login__box button:hover {
+  background-color: #fa6e16d2;
+}
+
+.login__error {
+  padding: 5px 20px;
+  color: red;
+  font-size: 14px;
+  font-weight: 400;
+}

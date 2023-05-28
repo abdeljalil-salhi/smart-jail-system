@@ -42,10 +42,17 @@ const Alarms = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const logout = (e) => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
+
   return (
     <>
       <div className="flex__space">
-        <h1>Smart Jail System 1.0.0 - Alarms</h1>
+        <a href="/">
+          <h1>Smart Jail System 1.0.0 - Alarms</h1>
+        </a>
         <div className="infos">
           {doorsClosed ? (
             <p className="info--closed">
@@ -56,6 +63,9 @@ const Alarms = () => {
               <b>Doors:</b> <i className="fa-solid fa-circle"></i>
             </p>
           )}
+          <p className="logout" onClick={logout}>
+            Log Out
+          </p>
         </div>
       </div>
       <div className="flex">

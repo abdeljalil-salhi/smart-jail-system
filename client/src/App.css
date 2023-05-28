@@ -32,6 +32,11 @@ body {
   overflow-x: hidden;
 }
 
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+
 .app .flex__space {
   display: flex;
   justify-content: space-between;
@@ -94,6 +99,13 @@ body {
 }
 .app .flex__space .infos .info--open i {
   color: green;
+}
+
+.app .flex__space .infos .logout {
+  transition: all 0.3s ease-in-out;
+}
+.app .flex__space .infos .logout:hover {
+  color: #fa6e16;
 }
 
 .app .cards {
